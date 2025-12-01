@@ -1,5 +1,5 @@
 
-FROM golang:1.25.1 AS base
+FROM golang:1.25.1 AS builder
 
 RUN go install github.com/air-verse/air@latest
 
@@ -11,7 +11,17 @@ RUN go mod download
 
 COPY . .
 
+RUN go build -o main ./cmd/main.go
+
+FROM ubuntu:22.04
+
+WORKDIR /app
+
+COPY --from=builder /app/main .
+COPY --from=builder /app/views ./views
+COPY --from=builder /app/css ./css
+
 ENV PORT=3000
 EXPOSE 3000
 
-CMD ["air", "-c", ".air.toml"]
+CMD ["./main"]
