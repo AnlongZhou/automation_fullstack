@@ -55,12 +55,12 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/to_do_list:latest
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/to_do_list:latest
 
-            docker stop todo-app || true
-            docker rm todo-app || true
+            sudo docker stop todo-app || true
+            sudo docker rm todo-app || true
 
-            docker run -d \
+            sudo docker run -d \
               --name todo-app \
               -p 3000:3000 \
               --restart unless-stopped \
