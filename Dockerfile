@@ -1,8 +1,6 @@
 
 FROM golang:1.25.1 AS builder
 
-RUN go install github.com/air-verse/air@latest
-
 WORKDIR /app
 
 COPY go.mod go.sum ./
