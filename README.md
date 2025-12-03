@@ -31,7 +31,7 @@ If you have Go installed on your machine:
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/YourUsername/repository-name.git](https://github.com/YourUsername/repository-name.git)
+    git clone https://github.com/AnlongZhou/automation_fullstack.git
     ```
 2.  Install dependencies:
     ```bash
