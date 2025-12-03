@@ -90,8 +90,3 @@ The EC2 instance is configured with the following **Security Group** rules:
 * **Port 22 (SSH):** Restricted to specific IP (Admin access).
 * **Port 3000 (App):** Open to `0.0.0.0/0` (Application access).
 * **Port 80 (HTTP):** Open to `0.0.0.0/0` (Future reverse proxy).
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-    
