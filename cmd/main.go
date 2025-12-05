@@ -77,10 +77,26 @@ func hasWork(works works, name string) bool {
 	return false
 }
 
+// func createProductTable(db *sql.DB) {
+// 	query := `CREATE TABLE IF NOT EXISTS products (
+//         id SERIAL PRIMARY KEY,
+//         name VARCHAR(100) NOT NULL,
+//         created timestamp DEFAULT NOW()
+//     )`
+//
+// 	_, err := db.Exec(query)
+//
+// 	if err != nil {
+// 		log.Fatalf("Failed to create products table: %v", err)
+// 	}
+//
+// }
+
 func main() {
 
 	e := echo.New()
 	e.Renderer = newTemplate()
+	e.Static("/css", "css")
 
 	page := newPage()
 
