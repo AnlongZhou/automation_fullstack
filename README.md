@@ -39,7 +39,7 @@ If you have Go installed on your machine:
     ```
 3.  Run the application:
     ```bash
-    go run .
+    go run cmd/main.go
     ```
 4.  Visit `http://localhost:3000` in your browser.
 
