@@ -45,4 +45,4 @@ def analyze_code(file_path):
 
 
 if __name__ == "__main__":
-    analyze_code("main.go")
+    analyze_code("cmd/main.go")
