@@ -23,6 +23,18 @@ A lightweight, containerized To-Do List application built with **Golang**. It fe
 ├── go.mod               # Go Module definitions
 └── main.go              # Application entry point
 ```
+## 🤖 AI Code Auditor
+
+This project integrates an **AI Agent** directly into the deployment pipeline. Before any code is shipped to the server, it undergoes an automated review.
+
+**How it works:**
+1.  **Extraction:** A Python script reads the source code (`main.go`) during the GitHub Action run.
+2.  **Analysis:** The code is sent to an LLM (Large Language Model).
+3.  **Audit:** The AI provides a summary and checks for logic bugs, security vulnerabilities, and hardcoded secrets.
+4.  **Report:** The results are printed in the CI/CD logs.
+
+**Example Pipeline Output:**
+<img width="1311" height="576" alt="Image" src="https://github.com/user-attachments/assets/9eabf5f2-5eac-47c5-b62d-1fcb2cb78b21" />
 
 ## 🛠️ How to Run Locally
 
@@ -62,11 +74,15 @@ This project uses **GitHub Actions** for automation.
 1.  **Continuous Integration (CI):**
     * Triggers on every push to `main`.
     * Runs `go test` to ensure code quality.
-2.  **Continuous Delivery (CD):**
+2.  **AI Audit:** 
+    * Run Ollama Server
+    * Pull Llama Model
+    * Run AI Auditor
+3.  **Continuous Delivery (CD):**
     * Logs into Docker Hub.
     * Builds the Docker Image.
     * Pushes the image to Docker Hub.
-3.  **Deployment:**
+4.  **Deployment:**
     * SSHs into the AWS EC2 instance.
     * Pulls the latest image.
     * Restarts the container with the new updates.
