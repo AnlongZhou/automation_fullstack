@@ -199,6 +199,9 @@
   .block {
     display: block;
   }
+  .flex {
+    display: flex;
+  }
   .table {
     display: table;
   }
@@ -216,6 +219,9 @@
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .flex-row {
+    flex-direction: row;
   }
   .truncate {
     overflow: hidden;

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <script src="https://unpkg.com/htmx.org@1.9.4"></script>
-    <link href="css/tailwind.css" rel="stylesheet">
+    <link href="css/output.css" rel="stylesheet">
 </head>
 
 <body class="h-screen bg-gray-800">
@@ -33,9 +33,9 @@
 {{ end }}
 
 {{ block "form" . }}
-<form hx-post="/submitForm" hx-swap="outerHTML">
+<form hx-post="/submitForm" hx-swap="outerHTML" class="w-full">
     <input {{ if .Value.work }} value="{{ .Value.work }}" {{ end }} type="text" name="work"
-        class="border p-2 w-full bg-gray-500" />
+        class="border p-2 bg-gray-500 w-full" />
     {{ if .Error.work }}
     <div class="text-red-500">{{ .Error.work }}</div>
     {{ end }}
@@ -52,8 +52,9 @@
 {{ end }}
 
 {{ block "work-name" . }}
-<div>
+<div class="flex flex-row">
     <p class="text-white"> Work : <span>{{ .Name }}</span> </p>
+    <button type="button">delete</button>
 </div>
 {{ end }}
 
