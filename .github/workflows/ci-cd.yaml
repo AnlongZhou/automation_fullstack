@@ -20,8 +20,37 @@ jobs:
       - name: Run test
         run: go test ./...
 
-  build-and-push:
+  ai-security-check:
     needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkouy code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install OpenAI library
+        run: pip install openai
+
+      - name: Install Ollama
+        run: curl -fsSL https://ollama.com/install.sh | sh
+
+      - name: Start Ollaama Server
+        run: ollama serve &
+
+      - name: Pull Llama Model
+        run: |
+          sleep 5
+          ollama pull llama3.2
+
+      - name: Run AI Auditor
+        run: python tools/ai_auditor.py
+
+  build-and-push:
+    needs: ai-security-check
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
